@@ -1,3 +1,4 @@
+import math
 #Exercício 01
 
 # idade = int(input('Informe sua idade: '))
@@ -13,5 +14,7 @@
 
 biscoitos = int(input('Informe a quantidade de biscoitos: '))
 pessoas = int(input('Informe a quantidade de pessoas: '))
+total = biscoitos / pessoas
+print(f'O total de biscoitos por pessoa é: {total}')
 
-print(f'O total de biscoitos por pessoa é: {biscoitos / pessoas}')
+print("Há {:.2f} biscoitos para cada pessoa.".format(total))
