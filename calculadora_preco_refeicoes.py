@@ -4,6 +4,7 @@
 # Comentários em cada etapa do código para explicar o que está sendo feito.
 # Adicionar a entrada de outros custos, como bebidas e sobremesas, para tornar o cálculo mais completo.
 # Adicionar a exibição do subtotal para crianças e adultos separadamente, além do subtotal geral.
+# Função if para verificar se o valor recebido do cliente é suficiente para cobrir o total com imposto, e informar ao usuário caso não seja suficiente.
 
 # Requisitos da etapa:
 
