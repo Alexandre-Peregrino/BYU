@@ -1,7 +1,11 @@
 # Jogo de Aventura: O Mistério das Portas Coloridas
 # Autor: Alexandre Peregrino
-# Criatividade extra: Além dos 3 níveis obrigatórios, adicionei um sistema de
-# inventário (itens coletados afetam opções futuras) e finais escondidos.
+
+# Criatividade extra: 
+
+# Além dos 3 níveis obrigatórios, adicionei um sistema de inventário (itens coletados afetam opções futuras) e finais escondidos.
+# função limpar tela para melhorar a experiência do usuário.
+#função __main__ para permitir que o jogo seja executado diretamente, e exportado como módulo para integração futura com outros jogos ou sistemas.
 
 import os
 
@@ -33,14 +37,14 @@ def jogo():
         print("Você entra em uma sala iluminada por velas.")
         print("No centro, há duas mesas com objetos:")
         print()
-        print("  💀  CHAVE DE OURO")
-        print("  📜  MAPA ANTIGO")
+        print("  💀  CHAVE")
+        print("  📜  MAPA")
         print()
         
         escolha2 = input("Qual objeto você pega? ").strip().lower()
         
         # --- NÍVEL 2: PEGOU A CHAVE ---
-        if escolha2 == "chave de ouro":
+        if escolha2 == "chave":
             print()
             print("A chave se encaixa em uma porta secreta na parede.")
             print("Ao abrir, você vê três baús:")
@@ -72,7 +76,7 @@ def jogo():
                 print("O baú some em uma nuvem de fumaça! FIM!")
         
         # --- NÍVEL 2: PEGOU O MAPA ---
-        elif escolha2 == "mapa antigo":
+        elif escolha2 == "mapa":
             print()
             print("O mapa revela um caminho escondido na floresta.")
             print("Você segue e encontra uma bifurcação:")
@@ -150,11 +154,11 @@ def jogo():
             
             escolha3 = input("Qual cela explorar? ").strip().lower()
             
-            if escolha3 == "luz":
+            if escolha3 == " cela da luz":
                 print()
                 print("Dentro da cela, você acha um túnel de fuga!")
                 print("VOCÊ ESCAPOU! 🎉")
-            elif escolha3 == "sombras":
+            elif escolha3 == "cela das sombras":
                 print()
                 print("A cela se tranca atrás de você... FIM!")
             else:
