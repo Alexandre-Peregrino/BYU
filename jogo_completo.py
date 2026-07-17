@@ -40,7 +40,7 @@ def jogo():
         escolha2 = input("Qual objeto você pega? ").strip().lower()
         
         # --- NÍVEL 2: PEGOU A CHAVE ---
-        if escolha2 == "chave":
+        if escolha2 == "chave de ouro":
             print()
             print("A chave se encaixa em uma porta secreta na parede.")
             print("Ao abrir, você vê três baús:")
@@ -53,17 +53,17 @@ def jogo():
             escolha3 = input("Qual baú abrir? ").strip().lower()
             
             # --- NÍVEL 3 ---
-            if escolha3 == "dourado":
+            if escolha3 == "baú dourado":
                 print()
                 print("O baú se abre com uma luz ofuscante!")
                 print("Você encontrou o tesouro lendário!")
                 print("PARABÉNS — VOCÊ VENCEU! 🏆")
-            elif escolha3 == "prateado":
+            elif escolha3 == "baú prateado":
                 print()
                 print("Ao tocar no baú, uma névoa te envolve...")
                 print("Você desmaia e acorda no ponto inicial.")
                 print("FIM — TENTE NOVAMENTE!")
-            elif escolha3 == "ferro":
+            elif escolha3 == "baú de ferro":
                 print()
                 print("Você abre o baú e encontra a saída secreta!")
                 print("VOCÊ ESCAPOU! 🎉")
@@ -72,7 +72,7 @@ def jogo():
                 print("O baú some em uma nuvem de fumaça! FIM!")
         
         # --- NÍVEL 2: PEGOU O MAPA ---
-        elif escolha2 == "mapa":
+        elif escolha2 == "mapa antigo":
             print()
             print("O mapa revela um caminho escondido na floresta.")
             print("Você segue e encontra uma bifurcação:")
@@ -84,11 +84,11 @@ def jogo():
             escolha3 = input("Qual caminho seguir? ").strip().lower()
             
             # --- NÍVEL 3 ---
-            if escolha3 == "direita":
+            if escolha3 == "caminho da direita":
                 print()
                 print("O caminho leva direto à saída da floresta!")
                 print("VOCÊ VENCEU! 🌟")
-            elif escolha3 == "esquerda":
+            elif escolha3 == "caminho da esquerda":
                 print()
                 print("Você cai em um rio e é levado pela correnteza...")
                 print("FIM — TENTE NOVAMENTE!")
