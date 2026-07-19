@@ -4,8 +4,12 @@
 # Criatividade extra: 
 
 # Além dos 3 níveis obrigatórios, adicionei um sistema de inventário (itens coletados afetam opções futuras) e finais escondidos.
+
 # função limpar tela para melhorar a experiência do usuário.
+
 #função __main__ para permitir que o jogo seja executado diretamente, e exportado como módulo para integração futura com outros jogos ou sistemas.
+
+#escolha de emojis para representar portas, objetos e ações, tornando a narrativa mais visual e envolvente.
 
 import os
 
@@ -16,12 +20,12 @@ def jogo():
     limpar_tela()
     
     print("=" * 60)
-    print("               O MISTÉRIO DAS PORTAS COLORIDAS")
+    print("               O ENÍGMA DAS PORTAS")
     print("=" * 60)
     print()
     print("Você acorda em um corredor com três portas à sua frente.")
     print()
-    print("  🚪  PORTA AMARELA    🚪  PORTA VERMELHA    🚪  PORTA AZUL")
+    print("  🚪  AMARELA    🚪  VERMELHA    🚪  AZUL")
     print()
     print("Apenas uma escolha leva à liberdade.")
     print("Escolha com sabedoria...")
@@ -29,7 +33,7 @@ def jogo():
     print("-" * 60)
     
     # ========== NÍVEL 1 ==========
-    escolha1 = input("Qual porta você abre? ").strip().lower()
+    escolha1 = input("Qual porta você abre(Escreva o nome completo, atenção é um requisito do jogo)? ").strip().lower()
     
     # --- CAMINHO: PORTA AMARELA ---
     if escolha1 == "amarela":
@@ -49,25 +53,25 @@ def jogo():
             print("A chave se encaixa em uma porta secreta na parede.")
             print("Ao abrir, você vê três baús:")
             print()
-            print("  📦  BAÚ DOURADO")
-            print("  📦  BAÚ PRATEADO")
-            print("  📦  BAÚ DE FERRO")
+            print("  📦  DOURADO")
+            print("  📦  PRATEADO")
+            print("  📦  FERRO")
             print()
             
             escolha3 = input("Qual baú abrir? ").strip().lower()
             
             # --- NÍVEL 3 ---
-            if escolha3 == "baú dourado":
+            if escolha3 == "dourado":
                 print()
                 print("O baú se abre com uma luz ofuscante!")
                 print("Você encontrou o tesouro lendário!")
                 print("PARABÉNS — VOCÊ VENCEU! 🏆")
-            elif escolha3 == "baú prateado":
+            elif escolha3 == "prateado":
                 print()
                 print("Ao tocar no baú, uma névoa te envolve...")
                 print("Você desmaia e acorda no ponto inicial.")
                 print("FIM — TENTE NOVAMENTE!")
-            elif escolha3 == "baú de ferro":
+            elif escolha3 == "ferro":
                 print()
                 print("Você abre o baú e encontra a saída secreta!")
                 print("VOCÊ ESCAPOU! 🎉")
@@ -81,18 +85,18 @@ def jogo():
             print("O mapa revela um caminho escondido na floresta.")
             print("Você segue e encontra uma bifurcação:")
             print()
-            print("  🌲  CAMINHO DA DIREITA")
-            print("  🌲  CAMINHO DA ESQUERDA")
+            print("  🌲  DIREITA")
+            print("  🌲  ESQUERDA")
             print()
             
             escolha3 = input("Qual caminho seguir? ").strip().lower()
             
             # --- NÍVEL 3 ---
-            if escolha3 == "caminho da direita":
+            if escolha3 == "direita":
                 print()
                 print("O caminho leva direto à saída da floresta!")
                 print("VOCÊ VENCEU! 🌟")
-            elif escolha3 == "caminho da esquerda":
+            elif escolha3 == "esquerda":
                 print()
                 print("Você cai em um rio e é levado pela correnteza...")
                 print("FIM — TENTE NOVAMENTE!")
@@ -148,17 +152,17 @@ def jogo():
             print("Você desce uma escadaria e chega a um calabouço.")
             print("Duas celas estão abertas:")
             print()
-            print("  🔒  CELA DA LUZ")
-            print("  🔒  CELA DAS SOMBRAS")
+            print("  🔒  LUZ")
+            print("  🔒  SOMBRAS")
             print()
             
             escolha3 = input("Qual cela explorar? ").strip().lower()
             
-            if escolha3 == " cela da luz":
+            if escolha3 == " luz":
                 print()
                 print("Dentro da cela, você acha um túnel de fuga!")
                 print("VOCÊ ESCAPOU! 🎉")
-            elif escolha3 == "cela das sombras":
+            elif escolha3 == "sombras":
                 print()
                 print("A cela se tranca atrás de você... FIM!")
             else:
@@ -180,7 +184,7 @@ def jogo():
         print("  🧭  BÚSSOLA")      # <-- 3 opções num cenário!
         print()
         
-        escolha2 = input("Qual objeto pegar? ").strip().lower()
+        escolha2 = input("Qual objeto pega? ").strip().lower()
         
         # --- NÍVEL 2: PEGOU A LANTERNA ---
         if escolha2 == "lanterna":
@@ -212,7 +216,7 @@ def jogo():
             print("Você pode:")
             print()
             print("  🏃  CORRER")
-            print("  🪨  SE ESCONDER")
+            print("  🪨  ESCONDER")
             print()
             
             escolha3 = input("O que fazer? ").strip().lower()
@@ -240,7 +244,7 @@ def jogo():
             
             escolha3 = input("O que fazer? ").strip().lower()
             
-            if escolha3 == "empurrar":
+            if escolha3 == "empurrar a parede":
                 print()
                 print("A parede se abre — é a saída! VOCÊ VENCEU! 🏆")
             elif escolha3 == "voltar":
