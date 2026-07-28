@@ -1,9 +1,6 @@
-maior_valor = 0
+import lista_compras
+import inserindo_varios_itens
 
-for valor in minha_lista:
+clientes = inserindo_varios_itens.captura_clientes()
 
-    if valor < maior_valor:
-
-        maior_valor = valor
-
-print(f'O maior valor é {maior_valor}') 
+lista_compras.imprimir(clientes)

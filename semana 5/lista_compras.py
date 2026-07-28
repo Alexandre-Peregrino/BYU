@@ -1,33 +1,36 @@
-#Lista de compras
+# lista_compras.py
 
-compras =[]
+def imprimir(compras):
+    for i in range(len(compras)):
+        print(f'índice {i}, item {compras[i]}')
+    return compras
 
-while True:
-    item_compra =input("Informe o ítem: ")
-    if item_compra.lower() == "fim":
-        break
-    compras.append(item_compra)
+# Só executa se rodar este arquivo diretamente
+if __name__ == "__main__":
+    compras = []
 
-print()
+    while True:
+        item_compra = input("Informe o ítem: ")
+        if item_compra.lower() == "fim":
+            break
+        compras.append(item_compra)
 
-print(f'A lista de compras é: {compras}')
+    print()
+    print(f'A lista de compras é: {compras}')
+    print()
 
-print()
-for i in range(len(compras)):
-    print(f'indice {i}, item {compras[i]}')
-
-print()
-
-remover_item = input('Qual ítem deseja remover? ')
-verifica = False
-for i in range(len(compras)):
-    if remover_item.lower() == compras[i].lower():
-        compras.pop(i)
-        inserir_item = input('Qual ítem deseja inserir? ')
-        compras.insert(i, inserir_item)
-        verifica = True
-        break
-if verifica:
+    remover_item = input('Qual ítem deseja remover? ')
+    verifica = False
+    for i in range(len(compras)):
+        if remover_item.lower() == compras[i].lower():
+            compras.pop(i)
+            inserir_item = input('Qual ítem deseja inserir? ')
+            compras.insert(i, inserir_item)
+            verifica = True
+            break
+    if verifica:
         print(f'Sua nova lista é: {compras}')       
-else:
-    print('Ítem não encontrado')
+    else:
+        print('Ítem não encontrado')
+
+    print(imprimir(compras))
