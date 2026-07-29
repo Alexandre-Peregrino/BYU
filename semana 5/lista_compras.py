@@ -1,52 +1,98 @@
-def imprimir(compras):
-    for i, (item, precos) in enumerate(compras.items()):
+"""
+########################################################
+#####         Adicionar ítens no carrinho          #####
+#####                 **********                   #####
+#####          Autor: Alexandre Peregrino          #####
+########################################################
+
+##############################
+#########CRIATIVIDADE#########
+##############################
+
+# Estratégias aplicadas para tornar o código mais eficiente e legível:
+# - Funções para evitar repetição de código (DRY)
+# - Dicionário para associar itens a listas de preços
+# - enumerate para exibir índices começando em 1
+# - list(compras.keys()) para acessar itens por posição
+# - sum() aninhado para totalizar preços
+# - try/except para validar entrada numérica e valores positivos
+# - replace para tratar "." e "," modelo aceito pelo python
+# - Subtotal exibido a cada inserção para auxiliar na tomada de decisão
+"""
+
+def imprimir(lista_compras):
+    for i, (item, precos) in enumerate(lista_compras.items()):
         total_item = sum(precos)
-        print(f'Índice {i}, item {item}, preços {precos}, total R$ {total_item:.2f}')
+        print(f'Índice {i + 1}, item {item}, preços {precos}, total R$ {total_item:.2f}')
 
-def remover(item_compra):
-    for item in compras:
-        if item.lower() == item_compra.lower():
-            compras.pop(item)
-            print(f'{item} foi removido')
-            return True
-    print('Item não encontrado')
-    return False
+def remover_por_indice(indice_exibido):
+    itens = list(compras.keys())
+    indice_zero = indice_exibido - 1
 
-if __name__ == "__main__":
-    
-    compras = {}
+    if 0 <= indice_zero < len(itens):
+        item_removido = itens[indice_zero]
+        compras.pop(item_removido)
+        print(f'{item_removido} foi removido')
+        return True
+    else:
+        print('Índice inválido')
+        return False
+
+def calcular_soma(compras):
+    return sum(sum(precos) for precos in compras.values())
+
+# Loop para adicionar produtos às compras
+compras = {}
+
+while True:
+    item = input("Informe o item (ou 'fim' para encerrar): ").lower()
+    if item == "fim":
+        break
 
     while True:
-        item = input("Informe o item (ou 'fim' para encerrar): ")
-        if item.lower() == "fim":
-            break
-        preco = float(input("Informe o valor do item: "))
-        
-        if item in compras:
-            compras[item].append(preco)
-        else:
-            compras[item] = [preco]
+        try:
+            preco = float(input("Informe o valor do item: ").replace(",", "."))
+            if preco <= 0:
+                print("O valor deve ser maior que zero. Tente novamente.")
+            else:
+                break
+        except ValueError:
+            print("Valor inválido. Digite um número.")
 
-    # Depois de sair do loop de compras, pergunta sobre remover
-    while True:
-        print()
-        print("Lista atual:")
-        imprimir(compras)
-        
-        remover_item = input("Qual item deseja remover? (ou 'não' para sair): ")
-        if remover_item.lower() == "não" or remover_item.lower() == "nao":
-            break
-        
-        remover(remover_item)
+    if item in compras:
+        compras[item].append(preco)
+    else:
+        compras[item] = [preco]
 
-    # Soma final
+print()
+subtotal = calcular_soma(compras)
+print(f'Subtotal: R$ {subtotal:.2f}')
+print()
+
+# Loop para remover itens pelo índice
+while True:
     print()
-    print("=" * 30)
-    print("RESUMO FINAL")
-    print("=" * 30)
-    total_geral = 0
-    for item, precos in compras.items():
-        total_item = sum(precos)
-        total_geral += total_item
-        print(f'{item}: R$ {total_item:.2f} ({len(precos)} compra(s))')
-    print(f'TOTAL GERAL: R$ {total_geral:.2f}')
+    print("Lista atual:")
+    imprimir(compras)
+    print()
+
+    try:
+        entrada = input("Digite o ÍNDICE do item para remover (ou 'não' para sair): ")
+        if entrada.lower() in ("não", "nao"):
+            break
+
+        indice = int(entrada)
+        remover_por_indice(indice)
+
+    except ValueError:
+        print("Digite um número válido.")
+
+# Resumo final
+print()
+print("=" * 30)
+print("RESUMO FINAL")
+print("=" * 30)
+imprimir(compras)
+
+total_geral = calcular_soma(compras)
+print(f'TOTAL GERAL: R$ {total_geral:.2f}')
