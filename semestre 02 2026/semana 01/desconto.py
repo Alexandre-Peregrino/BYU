@@ -2,7 +2,7 @@
 Sistema de cálculo de compra com imposto e desconto promocional.
 
 Regras de negócio:
-- O usuário informa itens (valor e quantidade) até digitar 0 no valor.
+- O usuário informa itens (valor e quantidade) até digitar 0 na quantidade.
 - Imposto: 6% sobre o subtotal.
 - Desconto: 10% sobre o subtotal, aplicado apenas quando o subtotal
   for >= 50 e o dia da semana for terça (1) ou quarta (2).
@@ -20,30 +20,30 @@ DESCONTO_PERCENTUAL = 0.10
 VALOR_MINIMO_DESCONTO = 50.0
 DIAS_PROMOCAO = (1, 2)  # 0=segunda, 1=terça, 2=quarta, ..., 6=domingo
 
+# Validação de entrada (float). Lê um número do usuário, tratando entradas inválidas.
 def ler_valor(mensagem: str) -> float:
-    """Lê um número do usuário, tratando entradas inválidas."""
     while True:
         try:
             return float(input(mensagem))
         except ValueError:
             print("Entrada inválida. Digite um número.")
 
+# Lê os itens da compra e retorna o subtotal acumulado.
 def ler_itens() -> float:
-    """Lê os itens da compra e retorna o subtotal acumulado."""
     subtotal = 0.0
     while True:
-        valor = ler_valor("Informe o valor do item (0 para encerrar): ")
-        if valor <= 0:
+        valor = ler_valor("Informe o valor do item: ")
+        quantidade = ler_valor("Informe a quantidade de itens (0 para encerrar): ")
+        if quantidade == 0:
             break
-        quantidade = ler_valor("Informe a quantidade de itens: ")
-        if quantidade <= 0:
-            print("Quantidade inválida. Use um valor maior que zero.")
+        if valor < 0 or quantidade < 0:
+            print("Valores negativos não são permitidos.")
             continue
         subtotal += valor * quantidade
     return subtotal
 
+# Calcula imposto, desconto e total conforme as regras de negócio.
 def calcular_total(subtotal: float, dia: int) -> tuple[float, float, float]:
-    """Calcula imposto, desconto e total conforme as regras de negócio."""
     imposto = subtotal * IMPOSTO_PERCENTUAL
     desconto = 0.0
     if subtotal >= VALOR_MINIMO_DESCONTO and dia in DIAS_PROMOCAO:
