@@ -13,3 +13,4 @@ for i in range(3, 0, -1):
 # Usa uma f-string do Python para formatar
 # uma saudação ao usuário e depois a imprime.
 print(f"Bem-vindo(a) ao CSE 111, {nome}!")
+
