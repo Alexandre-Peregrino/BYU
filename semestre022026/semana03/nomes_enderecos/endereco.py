@@ -28,7 +28,6 @@ def extrair_cidade(endereco_completo):
             rua, número, bairro, cidade - estado, CEP
     Retorno: a sigla do estado (2 letras)
     """
-
 def extrair_estado(endereco_completo):
     
     endereco_completo = endereco_completo.strip()
