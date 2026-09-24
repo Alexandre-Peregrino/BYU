@@ -1,0 +1,39 @@
+body{
+     font-family: acme, sans-serif;
+}
+
+.flex-container{
+
+    border: 3px dashed darkcyan;
+    background-color:  lightyellow;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.flex-item{
+    width:250px;
+    margin: 1rem;
+    border: 1px solid rgb(0 0 0 /0.2);
+    padding: 0.5rem;
+    background-color: #bbb;
+    color: #333;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.item1{
+    min-height: 100px;
+    align-items: center;
+}
+
+.item2{
+    min-height: 200px;
+}
+
+.item3{
+    min-height: 300px;
+}

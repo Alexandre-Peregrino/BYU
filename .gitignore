@@ -1,0 +1,23 @@
+# Python: cache e arquivos compilados
+__pycache__/
+*.py[cod]
+*$py.class
+
+# LibreOffice / Word: travas e temporários
+.~lock.*
+~$*.docx
+~$*.odt
+
+# Editores de texto
+*.swp
+*.swo
+*~
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Documentos — descomente as linhas abaixo se NÃO quiser versioná-los
+# *.docx
+# *.odt
+# *.pdf
