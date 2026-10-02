@@ -14,6 +14,7 @@
 #   3. Para um país escolhido pelo usuário, calcular a média,
 #      a máxima e a mínima da expectativa de vida em todos
 #      os anos disponíveis. 
+
 # Fonte de dados: expectativa-de-vida.csv
 # Formato esperado de cada linha: pais,sigla,ano,expectativa
 # ============================================================
@@ -26,14 +27,17 @@ with open('expectativa-de-vida.csv', encoding='utf-8') as dados_csv:
     # Padrão "None": significa "ainda não encontrei o primeiro
     # valor". O primeiro registro lido sempre entra na comparação,
     # sem depender de chutes como 0 ou 1.000.000.000.000.
+
     menor_expectativa = maior_expectativa = None
     pais_menor = pais_maior = ano_menor = ano_maior = None
 
     # Acumuladores de comparação do ano escolhido (mesmo padrão None)
+
     expectativa_maior_pais_ano = expectativa_menor_pais_ano = None
     pais_menor_expectativa = pais_maior_expectativa = None
 
     # Acumuladores de SOMA: começam em 0 (somar e contar)
+
     cont = 0
     expectativa_ano_escolhido = 0
 
@@ -43,6 +47,7 @@ with open('expectativa-de-vida.csv', encoding='utf-8') as dados_csv:
     # --- Validação do ano escolhido --------------------------
     # O laço "while True" só termina com "break", que acontece
     # quando o usuário digita um número inteiro positivo.
+    
     while True:
         try:
             ano_escolhido = int(input("Informe o ano para análise: ").strip())
@@ -63,52 +68,57 @@ with open('expectativa-de-vida.csv', encoding='utf-8') as dados_csv:
             break
         print("O país não pode ser vazio. Digite um nome válido.")
 
-
-
     # --- Percorrimento do arquivo, linha por linha ------------
     for dados in dados_csv:
-        dado_limpo = dados.strip().split(',')
-        pais = dado_limpo[0].strip('"')
-        ano = int(dado_limpo[2])          # int: comparação com ano_escolhido
-                                          # exige o MESMO tipo
-        expectativa = float(dado_limpo[3])  # float: maior/menor numéricos,
-                                            # nunca comparação de texto
+        try:
+            dado_limpo = dados.strip().split(',')
+            pais = dado_limpo[0].strip('"')
+            ano = int(dado_limpo[2])          # int: comparação com ano_escolhido
+                                              # exige o MESMO tipo
+            expectativa = float(dado_limpo[3])  # float: maior/menor numéricos,
+                                                # nunca comparação de texto
 
-        # Busca da MENOR expectativa geral (todos os anos)
-        if menor_expectativa is None or expectativa < menor_expectativa:
-            menor_expectativa = expectativa
-            pais_menor = pais
-            ano_menor = ano
+            # Busca da MENOR expectativa geral (todos os anos)
+            if menor_expectativa is None or expectativa < menor_expectativa:
+                menor_expectativa = expectativa
+                pais_menor = pais
+                ano_menor = ano
 
-        # Busca da MAIOR expectativa geral (todos os anos)
-        if maior_expectativa is None or expectativa > maior_expectativa:
-            maior_expectativa = expectativa
-            pais_maior = pais
-            ano_maior = ano
+            # Busca da MAIOR expectativa geral (todos os anos)
+            if maior_expectativa is None or expectativa > maior_expectativa:
+                maior_expectativa = expectativa
+                pais_maior = pais
+                ano_maior = ano
 
-        # Estatísticas do ano escolhido pelo usuário
-        if ano_escolhido == ano:
-            cont += 1                          # conta os países do ano
-            expectativa_ano_escolhido += expectativa  # soma as expectativas
+            # Estatísticas do ano escolhido pelo usuário
+            if ano_escolhido == ano:
+                cont += 1                          # conta os países do ano
+                expectativa_ano_escolhido += expectativa  # soma as expectativas
 
-            # Maior expectativa dentro do ano escolhido
-            if expectativa_maior_pais_ano is None or expectativa > expectativa_maior_pais_ano:
-                pais_maior_expectativa = pais
-                expectativa_maior_pais_ano = expectativa
+                # Maior expectativa dentro do ano escolhido
+                if expectativa_maior_pais_ano is None or expectativa > expectativa_maior_pais_ano:
+                    pais_maior_expectativa = pais
+                    expectativa_maior_pais_ano = expectativa
 
-            # Menor expectativa dentro do ano escolhido
-            if expectativa_menor_pais_ano is None or expectativa < expectativa_menor_pais_ano:
-                pais_menor_expectativa = pais
-                expectativa_menor_pais_ano = expectativa
+                # Menor expectativa dentro do ano escolhido
+                if expectativa_menor_pais_ano is None or expectativa < expectativa_menor_pais_ano:
+                    pais_menor_expectativa = pais
+                    expectativa_menor_pais_ano = expectativa
 
-        #Estatísticas do país escolhido pelo usuário
-        if pais_escolhido.lower() == pais.lower():
-            cont_pais += 1
-            soma_pais += expectativa
-            if menor_pais is None or expectativa < menor_pais:
-                menor_pais = expectativa
-            if maior_pais is None or expectativa > maior_pais:
-                maior_pais = expectativa
+            # Estatísticas do país escolhido pelo usuário
+            if pais_escolhido.lower() == pais.lower():
+                cont_pais += 1
+                soma_pais += expectativa
+                if menor_pais is None or expectativa < menor_pais:
+                    menor_pais = expectativa
+                if maior_pais is None or expectativa > maior_pais:
+                    maior_pais = expectativa
+
+        except (IndexError, ValueError):
+            # Linha malformada ou com dados inesperados
+            # (ex.: número errado de colunas, ano ou expectativa
+            # que não são números): ignora e segue para a próxima.
+            continue
 
     # --- Resultados gerais (independentes do ano escolhido) ---
     print(f'A expectativa de vida máxima geral é: {maior_expectativa} de {pais_maior} em {ano_maior}')
