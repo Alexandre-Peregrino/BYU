@@ -1,4 +1,7 @@
-a = 12
-b = 2
-c = a // b
-print(c)
+metais={ "Ag" : "Prata", "Al": "Alumínio", "Au": "Ouro", "Fe": "Ferro", } 
+
+
+print(metais["Au"])
+
+if "Prata" in metais:
+    print('ok')
