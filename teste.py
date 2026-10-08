@@ -6,7 +6,7 @@ print(metais["Au"])
 
 if "Prata" in metais:
     print('ok')
-=======
+    =======
 def main():
     estudantes = {
         "42-039-4736": "Carlos Silva",
