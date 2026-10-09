@@ -1,0 +1,30 @@
+Respostas para a proposta
+1. Qual é o título do seu programa?
+
+Contador de Frequência de Palavras
+
+2. Que problema do mundo real o seu programa vai abordar?
+
+Analisar textos escritos em português para descobrir quais palavras aparecem com mais frequência. Isso é útil para estudantes que querem revisar seus próprios textos (identificar repetições excessivas), para professores que analisam redações e para qualquer pessoa que precise resumir o vocabulário de um documento grande, como um relatório ou um livro.
+
+3. O que você aprenderá ao desenvolver este programa?
+
+Vou aprofundar meu conhecimento em dicionários compostos (chave = palavra, valor = contagem), leitura e processamento de arquivos de texto, manipulação de strings (remoção de pontuação, conversão para minúsculas), ordenação de dicionários por valor e escrita de funções de teste com pytest.
+
+4. Quais módulos Python o seu programa usará?
+
+pytest (para as funções de teste). Se eu adicionar a exibição das palavras mais frequentes em ordem, também usarei recursos de ordenação nativos do Python; se sobrar tempo, pretendo explorar o módulo string para facilitar a remoção de pontuação.
+
+5. Liste os nomes das funções de que você precisará.
+
+ler_arquivo(nome_arquivo) — recebe o nome do arquivo e retorna o texto completo como string
+normalizar_texto(texto) — recebe o texto e retorna a versão em minúsculas, sem pontuação
+contar_palavras(texto) — recebe o texto normalizado e retorna um dicionário {palavra: quantidade}
+ordenar_contagem(contagem) — recebe o dicionário e retorna a lista ordenada da palavra mais frequente para a menos frequente
+main() — obtém o nome do arquivo do usuário, chama as outras funções e exibe o resultado
+
+6. Liste os nomes das funções de teste que você escreverá.
+
+test_normalizar_texto — verifica se pontuação e maiúsculas são removidas corretamente
+test_contar_palavras — verifica se o dicionário de contagens está correto para um texto conhecido
+(se sobrar tempo) test_ordenar_contagem — verifica a ordem do resultado
